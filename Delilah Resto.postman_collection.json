@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "cb47d6ca-fc19-4ba0-b3dd-afdddf6528c4",
+		"name": "Delilah Resto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Usuario - sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"usuario\": \"josebarzo\",\n        \"nombre_apellido\": \"jose barzola\",\n        \"email\": \"jose@email.com\",\n        \"telefono\": \"452345123\",\n        \"direccion_envio\": \"anonimo 4532456\",\n        \"pw\": \"jose333444\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/usuario/signup",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"usuario",
+								"signup"
+							]
+						},
+						"description": "nuevo usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario - log in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"usuario\": \"nikinicole\",\n        \"pw\": \"nicole1234\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/usuario/login",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"usuario",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "productos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenNicole}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenNicole}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/productos",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "producto id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/productos/4",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"productos",
+								"4"
+							]
+						},
+						"description": "get de un prod por su id"
+					},
+					"response": []
+				},
+				{
+					"name": "producto nuevo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"nombre\": \"Pizza especial a elección.\",\n    \"precio\": 380,\n    \"descripcion\": \"1/2 pizza muzzarella y 1/2 pizza especial a elección\",\n    \"imagen\": \"pizzaespecial.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/productos",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"productos"
+							]
+						},
+						"description": "crear un producto nuevo"
+					},
+					"response": []
+				},
+				{
+					"name": "modificar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"nombre\": \"Napolitana\",\n    \"precio\": 380,\n    \"descripcion\": \"Milanesa a la napolitana. Incluye Papas\",\n    \"imagen\": \"Napolitana_milanesa.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/productos/9",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"productos",
+								"9"
+							]
+						},
+						"description": "edicion de producto existente en la tabla de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Producto - eliminarId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"nombre\": \"Pizza especial a elección.\",\n    \"precio\": 400,\n    \"descripcion\": \"1/2 pizza muzzarella y 1/2 pizza especial a elección.\",\n    \"imagen\": \"pizza_special.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/productos/6",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"productos",
+								"6"
+							]
+						},
+						"description": "elimnacion de un producto en la tabla de producto por su id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/usuarios",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "Trae todos los usuarios registrados"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/pedidos",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenInvitado2}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/pedidos/14",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"pedidos",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenInvitado2\n}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_pago\": \"1\",\n    \"detalles\": [\n        {\n            \"id_producto\": \"9\",\n            \"cantidad_producto\": \"1\"\n        },\n        {\n            \"id_producto\": \"1\",\n            \"cantidad_producto\": \"2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/pedidos",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "crear nuevo pedido"
+					},
+					"response": []
+				},
+				{
+					"name": "pedido id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"estado_nuevo\": \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/pedidos/14",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"pedidos",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{tokenAdmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/pedidos/13",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"pedidos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "localhost:3001"
+		},
+		{
+			"key": "tokenAdmin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRvc1VzdWFyaW8iOnsiaWRfdXN1YXJpbyI6MSwidXN1YXJpbyI6ImFndWRlbGdpdWRpY2UiLCJwdyI6IjEyMzQ1NiIsImFkbWluIjoxfSwiaWF0IjoxNjQ5MzY0NDQ1fQ.ygEZxKUii0Ggj3BhlG-Wl7JFf9NjLnoA-JaspNWZEVM"
+		},
+		{
+			"key": "tokenInvitado1\n",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRvc1VzdWFyaW8iOnsiaWRfdXN1YXJpbyI6MiwidXN1YXJpbyI6Im5pY29kcnVldHRhIiwicHciOiIxMjM0NTYiLCJhZG1pbiI6MH0sImlhdCI6MTY0OTM2NTg1MX0.W4lo7o1v7O9rjToz9SOi3_gy6bzidb3ggpWYaT5IED8"
+		},
+		{
+			"key": "tokenInvitado2\n",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRvc1VzdWFyaW8iOnsiaWRfdXN1YXJpbyI6MiwidXN1YXJpbyI6Im5pY29kcnVldHRhIiwicHciOiIxMjM0NTYiLCJhZG1pbiI6MH0sImlhdCI6MTY0OTM2NDk0Mn0.s7P_E715a79UzIck-5uMB38gTKDpdgk6qEHjvpN-HYA"
+		},
+		{
+			"key": "tokenInvitado2",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRvc1VzdWFyaW8iOnsiaWRfdXN1YXJpbyI6MTQsInVzdWFyaW8iOiJmbGF2aWFkZWwiLCJwdyI6IjEyMzQ1NiIsImFkbWluIjowfSwiaWF0IjoxNjQ5MzU4NTE0fQ.yKpjfv6whxMTFVUXifTERkBOQrIQC_vmAoTxBTg6WWk"
+		},
+		{
+			"key": "tokenAdmin1",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRvc1VzdWFyaW8iOnsiaWRfdXN1YXJpbyI6MiwidXN1YXJpbyI6Im5pY29kcnVldHRhIiwicHciOiIxMjM0NTYiLCJhZG1pbiI6MH0sImlhdCI6MTY0OTM1ODY5NX0.AhD7IVFm8nCMO3FHZZyr4dqe3kgUrvM_hxOnXl4E3Yo",
+			"disabled": true
+		}
+	]
+}
