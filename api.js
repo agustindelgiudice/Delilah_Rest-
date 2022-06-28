@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const rateLimit = require('express-rate-limit');
+// const rateLimit = require('express-rate-limit');
 const productos = require('./funciones/productos');
 const usuarios = require('./funciones/usuarios');
 const pedidos = require('./funciones/pedidos');
@@ -20,16 +20,16 @@ dotenv.config();
 
 
 //*Limitador de peticiónes // evita ataques de fuerza bruta
-const limiter = rateLimit ({
-  windowsMS: 60 * 60 * 1000,
-  max: 2,
-  message: "Has alcanzado el limite máximo de solicitudes"
-});
+// const limiter = rateLimit ({
+//   windowsMS: 60 * 60 * 1000,
+//   max: 2,
+//   message: "Has alcanzado el limite máximo de solicitudes"
+// });
 
 
 //----------------------------------------------------------------------------------//
 
-app.use(limiter);
+// app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(cors());
@@ -46,8 +46,8 @@ app.delete('/productos/:productoId', usersOk, adminOk, productos.eliminarProduct
 
 //*-->ENDPOINTS-USUARIOS<--//
 app.get('/usuarios', usersOk, adminOk, usuarios.verUsuarios);
-app.post('/usuario/signup', usuarios.nuevoUsuario, limiter);
-app.post('/usuario/login', usuarios.logInUsuario, limiter);
+app.get('/usuario/signup', usuarios.nuevoUsuario);
+app.post('/usuario/login', usuarios.logInUsuario);
 
 //*-->ENDPOINTS PEDIDOS<--//
 app.get('/pedidos', usersOk, adminOk, pedidos.verPedidos);

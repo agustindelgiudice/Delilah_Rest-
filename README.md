@@ -6,7 +6,7 @@
 
 * Completar el archivo ".env" con los datos correspondientes para la conexión a la base de datos (users, password y host). 
 
-* Dentro del .env podrás encontrar por si se desea cambiar, la información sobre el puerto del servidor y la firmar para el JWT.
+* Dentro del .env podrás encontrar por si se desea cambiar, la información sobre el puerto del servidor y la firma para el JWT.
 
 
 * El archivo "contenido_bd.sql" (dentro de la carpeta /database) contiene el script para crear la base de datos que utiliza la aplicación. Dentro de la base se encuentran usuarios con roles de administrador y cliente, así como productos y pedidos ya creados.
